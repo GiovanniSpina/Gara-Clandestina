@@ -3,8 +3,8 @@ document.addEventListener('DOMContentLoaded',main);
 window.addEventListener('resize' ,posizione_div);
 
 var invia = document.getElementsByName ("aggiungi_giocatore")[0];
-controllo_nome = document.getElementById("inserisci_nome");
-controllo_colore = document.getElementById("inserisci_colore");
+controllo_nome = document.getElementById("inserisci_nome").value;
+controllo_colore = document.getElementById("inserisci_colore").value;
 var giocatore = 0;
 
 
@@ -19,10 +19,10 @@ function main() {
 }
 
 function numero_giocatori(){
-     
-
+	
+	controllo_nome = document.getElementById("inserisci_nome").value;
+	controllo_colore = document.getElementById("inserisci_colore").value;
 	if (controllo_nome != "" && controllo_colore != "") {
-		alert(controllo_nome);
 		giocatore++;
 		if (giocatore>4) {
 
@@ -39,7 +39,7 @@ function numero_giocatori(){
 
 	} else{
 
-		alert("non hai inserito i dati");
+		alert("non hai inserito i dati del giocatore");
 	}
 
 }
