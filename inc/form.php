@@ -5,7 +5,7 @@
 	<div id="form-container" class="text-center">
 
 
-	<h1>CT Drift</h1>
+	<h1 color="white">CT Drift</h1>
 
 		<div class="form-group col-md-4 col-md-offset-4">
 

@@ -7,6 +7,7 @@ include 'inc/template-parts/header.php';
 
 ?>
 <script type="text/javascript" src="assets/js/funzioni.js"></script>
+<link rel="stylesheet" type="text/css" href="assets/css/proprieta.css">
 
 
 <!--bootstrap -->

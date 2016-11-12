@@ -21,8 +21,8 @@ function main() {
 
 function numero_giocatori(){
 
-	if (controllo_nome != "" && controllo_colore != "") {
-
+	//if (controllo_nome == undefined && controllo_colore != undefined) {
+        alert(controllo_nome);
 		giocatore++;
 		if (giocatore>4) {
 
@@ -37,10 +37,10 @@ function numero_giocatori(){
 			document.getElementById("label_giocatori").innerHTML = "<h4>hai aggiunto il giocatore </h4>" + giocatore;
 		} 
 
-	} else{
+	//} else{
 
-		alert("non hai inserito i dati");
-	}
+		//alert("non hai inserito i dati");
+	//}
 
 }
 
