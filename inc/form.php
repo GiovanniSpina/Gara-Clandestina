@@ -5,13 +5,13 @@
 	<div id="form-container" class="text-center">
 
 
-	<h1 color="white">CT Drift</h1>
+	<h1 id="titolo_gioco">CT Drift</h1>
 
 		<div class="form-group col-md-4 col-md-offset-4">
 
 
 
-			<label for="id_input">inserisci nome:</label>	
+			<label for="id_input"  class="text-border-1 text-border-2">inserisci nome:</label>	
 
 			<input id="inserisci_nome" type="text" name="nome1" class="form-control">
 
@@ -19,7 +19,7 @@
 
 		<div class="form-group col-md-4 col-md-offset-4">
 
-			<label for="id_input"> inserisci colore:</label>
+			<label for="id_input" class="text-border-1 text-border-2"> inserisci colore:</label>
 			<input id="inserisci_colore" type="text" name="colore1" class="form-control">
 
 		</div>
