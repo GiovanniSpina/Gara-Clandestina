@@ -2,6 +2,8 @@
 include 'inc/form.php';
 include 'inc/template-vars/gara_clandestina.php';
 include 'inc/template-parts/header.php';
+include 'inc/macchina.php';
+include 'inc/controllo_inserimento_giocatori.php';
 
 
 
