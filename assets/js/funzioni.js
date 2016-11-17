@@ -20,20 +20,29 @@ function onAvviaGaraClick(){
 	if (controllo_gara == false) {
 		
 		controllo_gara = true;
+		if (elemento>=2) {
 
-		var fd = new FormData();
-		fd.append("giocatori", JSON.stringify(giocatore));
-		console.log(giocatore)
-		var URL = 'http://localhost:8080/webinar2/esercizio3/inc/controllo_inserimento_giocatori.php';
-		var xmlRequest = new XMLHttpRequest();
-		xmlRequest.addEventListener("readystatechange", onRequestStateChange);
-		xmlRequest.open('POST', URL , true);
-		xmlRequest.send(fd);
+			var fd = new FormData();
+			fd.append("giocatori", JSON.stringify(giocatore));
+			console.log(giocatore)
+			var URL = 'http://localhost:8080/webinar2/esercizio3/inc/controllo_inserimento_giocatori.php';
+			var xmlRequest = new XMLHttpRequest();
+			xmlRequest.addEventListener("readystatechange", onRequestStateChange);
+			xmlRequest.open('POST', URL , true);
+			xmlRequest.send(fd);
+		
+		}
+
+		else{
+
+			alert("devono esserci almeno due giocatori per avviare una gara");
+			controllo_gara = false;
+		}
 	}
 
 	else{
 
-		alert("hai già avviato la gara");
+		alert("hai già avviato una gara");
 	}
 
 	
@@ -74,7 +83,6 @@ function numero_giocatori(){
 
 		else{
 
-			document.getElementById("variabile_num_giocatori").innerHTML = "<input type ='hidden' name='num_giocatori' value='"+ elemento +"'>";
 			document.getElementById("label_giocatori").innerHTML = "<h4> hai aggiunto il giocatore </h4>" + elemento;
 
 

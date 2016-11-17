@@ -4,11 +4,9 @@
 
 	<div id="form-container" class="text-center">
 		
-		<div id="variabile_num_giocatori"></div>
+	    <h1 id="titolo_gioco">CT Drift</h1>
 
-		<h1 id="titolo_gioco">CT Drift</h1>
-
-		<div class="form-group col-md-4 col-md-offset-4">
+		<div class="row form-group col-md-4 col-md-offset-4">
 
 
 
@@ -18,7 +16,7 @@
 
 		</div>
 
-		<div class="form-group col-md-4 col-md-offset-4">
+		<div class="row form-group col-md-4 col-md-offset-4">
 
 			<label for="id_input" class="text-border-1 text-border-2"> inserisci colore:</label>
 			<input id="inserisci_colore" type="text" name="colore1" class="form-control">
@@ -27,7 +25,7 @@
 
 		<br>
 
-		<div class="col-md-4 col-md-offset-4">
+		<div class=" row col-md-4 col-md-offset-4">
 
 			<input id="player" type="button" class="btn btn-primary" name="aggiungi_giocatore" value="Aggiungi Giocatore">
 			<button id="avvia" type="submit" class="btn btn-danger">Avvia Gara</button>
@@ -36,7 +34,7 @@
 
 		<br>
 
-		<div id="label_giocatori">
+		<div class="row" id="label_giocatori">
 
 
 		</div>
