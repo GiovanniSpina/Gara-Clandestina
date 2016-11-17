@@ -1,30 +1,45 @@
 <?php 
 
-Class Macchina {
+Class Macchina implements jsonSerializable{
 
 	private $nome;
 	private $colore;
-	private $stato;
-	private $velocita;
-
+	private $operazione=0;
+	private $movimento =0;
+	private $passi_i = 0;
 
 	public function Macchina($name,$color) {
 
-		$this->stato = 'spenta';
 		$this->nome = $name;
 		$this->colore = $color; 
 	}
 
-	public function metti_in_moto(){
+	public function setMovimento(){
 
-		if($this->stato === 'spenta'){
+		while ($this->operazione < 100) {
 
-			$this->stato = 'accesa';
-			$this->velocita = 0;
-		}
+			$this->movimento = rand(0,25);
+			$this->operazione += $this->movimento;
+			$this->passi_i++;
+			echo $this->operazione;
+
+		}	
+
+
 
 	}	
+	public function getPassiTotali(){
 
+		return $this->passi_i;
+	}
+
+	public function jsonSerialize() {
+		return Array (
+			'nome'     => $this->nome,
+			'colore'   => $this->colore,
+			'passi'    => $this->passi_i
+			);
+	}
 }
 
 

@@ -6,10 +6,10 @@ var invia = document.getElementsByName ("aggiungi_giocatore")[0];
 var avvia_gara = document.getElementById("avvia");
 var elemento = 0;
 var giocatore = [];
-
+var controllo_gara = false;
 function onRequestStateChange(){
 	if (this.readyState === 4 && this.status === 200 ) {
-		console.log(this.responseText);
+		alert(this.responseText);
 	}
 
 	
@@ -17,14 +17,26 @@ function onRequestStateChange(){
 
 
 function onAvviaGaraClick(){
-	var fd = new FormData();
-	fd.append("giocatori", JSON.stringify(giocatore));
-	console.log(giocatore)
-	var URL = 'http://localhost:8080/webinar2/esercizio3/inc/controllo_inserimento_giocatori.php';
-	var xmlRequest = new XMLHttpRequest();
-	xmlRequest.addEventListener("readystatechange", onRequestStateChange);
-	xmlRequest.open('POST', URL , true);
-	xmlRequest.send(fd);
+	if (controllo_gara == false) {
+		
+		controllo_gara = true;
+
+		var fd = new FormData();
+		fd.append("giocatori", JSON.stringify(giocatore));
+		console.log(giocatore)
+		var URL = 'http://localhost:8080/webinar2/esercizio3/inc/controllo_inserimento_giocatori.php';
+		var xmlRequest = new XMLHttpRequest();
+		xmlRequest.addEventListener("readystatechange", onRequestStateChange);
+		xmlRequest.open('POST', URL , true);
+		xmlRequest.send(fd);
+	}
+
+	else{
+
+		alert("hai già avviato la gara");
+	}
+
+	
 }
 
 
@@ -33,6 +45,7 @@ function main() {
 	posizione_div();
 	invia.addEventListener('click', numero_giocatori);
 	avvia_gara.addEventListener('click', onAvviaGaraClick);
+
 }
 
 
@@ -46,7 +59,7 @@ function numero_giocatori(){
 		giocatore.push(
 		{
 			"name": controllo_nome,
-			"color": controllo_colore
+			"color": controllo_colore 
 		}
 		);
 		elemento++;
