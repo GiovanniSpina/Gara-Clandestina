@@ -11,13 +11,21 @@ if(isset($_POST['giocatori'])) {
 		
 		
 	}
-	$macchinaV = $macchina[0];
+	$macchinaVincitrice = $macchina[0];
 	for ($i=0; $i < count($giocatori); ++$i) { 
 		$macchina[$i]->setMovimento();
 		if($macchina[$i]->getPassiTotali()<$macchinaV->getPassiTotali())	{
-			$macchinaV = $macchina[$i];
+			$macchinaVincitrice = $macchina[$i]; 
 		}	
 	}
 
-	echo "il vincitore è " . json_encode($macchinaV);	
+	for ($i=0; $i <count($giocatori) ; $i++) { 
+		$nome_giocatore = $giocatori[$i]->name;
+		echo json_encode($nome_giocatore)."". json_encode($macchina[$i]->getPosizioni());
+	}
+
+	
+	
+
+	echo "il vincitore è " . json_encode($macchinaVincitrice);	
 }

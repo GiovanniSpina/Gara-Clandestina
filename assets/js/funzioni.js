@@ -67,7 +67,7 @@ function numero_giocatori(){
 		document.getElementById("inserisci_colore").value = "";
 		if (elemento>100) {
 			elemento=100;
-			alert("non puoi inserire più di " + elemento + " giocatori");
+			alert("Non puoi inserire più di " + elemento + " giocatori.");
 			
 
 		}
@@ -84,7 +84,25 @@ function numero_giocatori(){
 
 	} else{
 
-		alert("non hai inserito i dati del giocatore");
+		if (controllo_nome != ""  && controllo_colore == "") {
+			alert("Devi assegnare un colore al giocatore per aggiungerlo alla gara.");
+		}
+
+		else{
+
+			if (controllo_nome == ""  && controllo_colore != "") {
+
+				alert("Devi assegnare un nome al giocatore per aggiungerlo alla gara.");
+			}
+
+			else{
+
+				if (controllo_nome == ""  && controllo_colore == "") {
+
+					alert("Devi assegnare dei dati al giocatore per aggiungerlo alla gara");
+				}
+			}
+		}
 	}
 
 }
