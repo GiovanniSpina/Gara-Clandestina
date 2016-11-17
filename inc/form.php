@@ -1,5 +1,5 @@
 
-<form method="POST"  id="form_1" action="./">
+<form method="POST"  id="form_1" onsubmit="return false;">
 
 
 	<div id="form-container" class="text-center">
@@ -30,7 +30,7 @@
 		<div class="col-md-4 col-md-offset-4">
 
 			<input id="player" type="button" class="btn btn-primary" name="aggiungi_giocatore" value="Aggiungi Giocatore">
-			<button type="submit" class="btn btn-danger">Avvia Gara</button>
+			<button id="avvia" type="submit" class="btn btn-danger">Avvia Gara</button>
 
 		</div>
 

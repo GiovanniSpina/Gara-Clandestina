@@ -1,11 +1,12 @@
 <?php
 
-if(isset($_POST['num_giocatori'])) {
-	
-	$num_giocatori = $_POST['num_giocatori'];
-	//echo "ho effettivamente settato qualcosa " . $_POST['num_giocatori'];
-	for ($i=0; $i < $num_giocatori ; $i++) { 
-		$macchina[$i] = new Macchina($_POST['nome1'],$_POST['colore1']);
+if(isset($_POST['giocatori'])) {
+	include("http://localhost:8080/webinar2/esercizio3/inc/macchina.php");
+	$giocatori = json_decode($_POST['giocatori']);
+	echo gettype($giocatori);
+	//echo "ho effettivamente settato qualcosa " . $_POST['giocatori'];
+	for ($i=0; $i < count($giocatori); ++$i) { 
+		$macchina[$i] = new Macchina($giocatori[$i]->name, $giocatori[$i]->color);
 	}
 	
 }

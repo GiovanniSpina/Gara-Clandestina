@@ -15,6 +15,7 @@ include 'inc/controllo_inserimento_giocatori.php';
 <!--bootstrap -->
 
 <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css.map">
 <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css.map">
 <script type="text/javascript" src="assets/js/jquery.js"></script>
 <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>

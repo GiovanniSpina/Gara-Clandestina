@@ -3,33 +3,36 @@ document.addEventListener('DOMContentLoaded', main);
 window.addEventListener('resize', posizione_div);
 
 var invia = document.getElementsByName ("aggiungi_giocatore")[0];
+var avvia_gara = document.getElementById("avvia");
 var elemento = 0;
 var giocatore = [];
 
 function onRequestStateChange(){
-
-	if (this.readystate === 4 && this.status === 200 ) {
-
-		console.log(this.response);
+	if (this.readyState === 4 && this.status === 200 ) {
+		console.log(this.responseText);
 	}
 
 	
 }
 
-var fd = new FormData();
-fd.append("proprieta_giocatori", giocatore);
-var URL = 'http://localhost:8080/webinar2/esercizio3/inc/controllo_inserimento_giocatori.php';
-var xmlRequest = new XMLHttpRequest();
-xmlRequest.addEventListener("readystatechange", onRequestStateChange);
-xmlRequest.open('POST', URL , true);
-xmlRequest.send(fd);
+
+function onAvviaGaraClick(){
+	var fd = new FormData();
+	fd.append("giocatori", JSON.stringify(giocatore));
+	console.log(giocatore)
+	var URL = 'http://localhost:8080/webinar2/esercizio3/inc/controllo_inserimento_giocatori.php';
+	var xmlRequest = new XMLHttpRequest();
+	xmlRequest.addEventListener("readystatechange", onRequestStateChange);
+	xmlRequest.open('POST', URL , true);
+	xmlRequest.send(fd);
+}
+
 
 function main() {
 
 	posizione_div();
 	invia.addEventListener('click', numero_giocatori);
-	
-	
+	avvia_gara.addEventListener('click', onAvviaGaraClick);
 }
 
 
@@ -60,7 +63,11 @@ function numero_giocatori(){
 
 			document.getElementById("variabile_num_giocatori").innerHTML = "<input type ='hidden' name='num_giocatori' value='"+ elemento +"'>";
 			document.getElementById("label_giocatori").innerHTML = "<h4> hai aggiunto il giocatore </h4>" + elemento;
+
+
+
 		} 
+
 
 	} else{
 
