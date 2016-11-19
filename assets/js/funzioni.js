@@ -7,12 +7,22 @@ var avvia_gara = document.getElementById("avvia");
 var elemento = 0;
 var giocatore = [];
 var controllo_gara = false;
+
 function onRequestStateChange(){
+	 console.log(risposta);
 	if (this.readyState === 4 && this.status === 200 ) {
-		alert(this.responseText);
+		visualizza_in_js(this.response);
 	}
 
 	
+}
+
+function visualizza_in_js(risposta){
+   
+	risposta = JSON.parse(risposta);
+	for (var i = 0; i < risposta.length; i++) {
+		document.getElementById("mostra_gara").innerHTML = "<label>" + risposta[i].nome + "</label>";
+	}
 }
 
 

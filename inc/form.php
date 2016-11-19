@@ -39,6 +39,10 @@
 
 		</div>
 
+		<div id="mostra_gara" class="row"></div>
+
+
+
 	</div>
 
 </form>
