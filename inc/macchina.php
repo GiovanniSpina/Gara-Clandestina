@@ -7,8 +7,8 @@ Class Macchina implements jsonSerializable{
 	private $operazione=0;
 	private $movimento =0;
 	private $passi_i = 0;
-	private $posizioni = array();
-	private $numeri_rand = array();
+	private $posizioni;
+	private $numeri_rand;	
 
 	public function Macchina($name,$color) {
 
@@ -25,11 +25,6 @@ Class Macchina implements jsonSerializable{
 			$this->numeri_rand[$i] = $this->operazione;
 			$this->passi_i++;
 
-
-		}	
-
-		for ($i=0; $i != $this->passi_i ; $i++) { 
-			$this->posizioni[$i] = $this->passi_i;
 		}	
 
 		
@@ -55,7 +50,8 @@ Class Macchina implements jsonSerializable{
 		return Array (
 			'nome'     => $this->nome,
 			'colore'   => $this->colore,
-			'passi'    => $this->passi_i
+			'passi'    => $this->passi_i,
+			'numeri_rand' => $this->numeri_rand
 			);
 	}
 }

@@ -4,7 +4,7 @@
 
 	<div id="form-container" class="text-center">
 		
-	    <h1 id="titolo_gioco">CT Drift</h1>
+		<h1 id="titolo_gioco">CT Drift</h1>
 
 		<div class="row form-group col-md-4 col-md-offset-4">
 
@@ -17,10 +17,13 @@
 		</div>
 
 		<div class="row form-group col-md-4 col-md-offset-4">
-
-			<label for="id_input" class="text-border-1 text-border-2"> inserisci colore:</label>
-			<input id="inserisci_colore" type="text" name="colore1" class="form-control">
-
+			<label class="text-border-1 text-border-2" for="sel1">scegli colore:</label>
+			<select id="inserisci_colore" name="colore1" class="form-control" type="text">
+				<option>blu</option>
+				<option>rosso</option>
+				<option>verde</option>
+				<option>giallo</option>
+			</select>
 		</div>
 
 		<br>
@@ -38,10 +41,6 @@
 
 
 		</div>
-
-		<div id="mostra_gara" class="row"></div>
-
-
 
 	</div>
 

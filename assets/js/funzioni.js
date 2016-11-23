@@ -7,9 +7,10 @@ var avvia_gara = document.getElementById("avvia");
 var elemento = 0;
 var giocatore = [];
 var controllo_gara = false;
-
+var spostamenti_in_pixel = 0;
+var ritarda_movimento = 0;
+var numero_macchine = 0;
 function onRequestStateChange(){
-	 console.log(risposta);
 	if (this.readyState === 4 && this.status === 200 ) {
 		visualizza_in_js(this.response);
 	}
@@ -18,15 +19,48 @@ function onRequestStateChange(){
 }
 
 function visualizza_in_js(risposta){
-   
+	spostamenti_in_pixel = window.innerHeight - 200;
+	//ritarda_movimento = setInterval(visualizza_in_js.bind(this,risposta), 700);
 	risposta = JSON.parse(risposta);
 	for (var i = 0; i < risposta.length; i++) {
-		document.getElementById("mostra_gara").innerHTML = "<label>" + risposta[i].nome + "</label>";
+		document.getElementById("form-container").style.display = "none";
+		document.getElementById("mostra_gara").innerHTML += "<div id='piloti' class='row'> <label class ='text-border-1 text-border-2'>" + risposta[i].nome + "</label>" +"<br>"+ "<img id='sfondo_gara' src ='assets/img/macchina_gara.jpg'> </div>";	
+	}
+
+	gara(risposta);
+}
+
+function gara (risposta){
+
+	if ( numero_macchine < risposta.length){
+
+		for (var i = 0 , j = 0; i < risposta.length; i++) {
+
+			if (risposta[i].passi_i != -1) {
+
+				while (risposta[i].numeri_rand[j] < risposta[i].passi_i) {
+					spostamenti_in_pixel = (spostamenti_in_pixel * risposta[i].numeri_rand[j])/100;
+					document.getElementById("piloti").style.left = spostamenti_in_pixel + "px";
+					j++;
+					console.log(risposta[i].passi_i);
+					console.log(spostamenti_in_pixel);
+				}
+			}
+
+			else{				
+
+				console.log("qualcosa non va");
+
+			}
+		}
+
 	}
 }
 
 
 function onAvviaGaraClick(){
+
+
 	if (controllo_gara == false) {
 		
 		controllo_gara = true;
@@ -35,12 +69,11 @@ function onAvviaGaraClick(){
 			var fd = new FormData();
 			fd.append("giocatori", JSON.stringify(giocatore));
 			console.log(giocatore)
-			var URL = 'http://localhost:8080/webinar2/esercizio3/inc/controllo_inserimento_giocatori.php';
+			var URL = 'inc/controllo_inserimento_giocatori.php';
 			var xmlRequest = new XMLHttpRequest();
 			xmlRequest.addEventListener("readystatechange", onRequestStateChange);
 			xmlRequest.open('POST', URL , true);
 			xmlRequest.send(fd);
-		
 		}
 
 		else{
