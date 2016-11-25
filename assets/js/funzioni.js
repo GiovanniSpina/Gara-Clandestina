@@ -9,17 +9,20 @@ var altezza_window = window.innerHeight/2;
 var elemento = 0;
 var giocatore = [];
 var controllo_gara = false;
-spostamenti_in_pixel = window.innerHeight - 200;
+lunghezza_percorso = window.innerWidth - 500;
 var ritarda_animazione;
 var numero_macchine = 0;
 var j = 0;
 var i = 0;
+var sound = document.createElement("audio");
+sound.src = "assets/musica/musica_gioco.wav";
+
+
 
 function onRequestStateChange(){
 	if (this.readyState === 4 && this.status === 200 ) {
 		console.log(this.responseText);
 		visualizza_in_js(this.response);
-		gara(this.response);
 	}
 
 	
@@ -31,7 +34,35 @@ function visualizza_in_js(risposta){
 	for (var i = 0; i < risposta.length; i++) {
 		document.getElementById("form-container").style.display = "none";
 		form_1.style.marginTop = 200 + "px";
-		document.getElementById("mostra_gara").innerHTML += "<div id='div_partecipante' name='piloti' class='row'> <label class ='text-border-1 text-border-2'>" + risposta[i].nome + "</label>" +"<br>"+ "<img id='sfondo_gara' src ='assets/img/macchina_gara.jpg'> </div>";	
+		if (risposta[i].colore === "blu") {
+			document.getElementById("mostra_gara").innerHTML += "<div id='div_partecipante' class='row'> <label class ='text-border-1 text-border-2'>" + risposta[i].nome + "</label>" +"<br>"+ "<img name='piloti' style =' width: 200px; position: relative;' id='sfondo_gara' src ='assets/img/macchina_blu.png'> </div>";	
+		}
+		else{
+
+			if (risposta[i].colore == "rosso") {
+
+				document.getElementById("mostra_gara").innerHTML += "<div id='div_partecipante' class='row'> <label class ='text-border-1 text-border-2'>" + risposta[i].nome + "</label>" +"<br>"+ "<img name='piloti' style =' width: 200px; position: relative;' id='sfondo_gara' src ='assets/img/macchina_rossa.png'> </div>";	
+
+			}
+			else{
+
+				if (risposta[i].colore == "giallo") {
+
+					document.getElementById("mostra_gara").innerHTML += "<div id='div_partecipante' class='row'> <label class ='text-border-1 text-border-2'>" + risposta[i].nome + "</label>" +"<br>"+ "<img name='piloti' style =' width: 200px; position: relative;' id='sfondo_gara' src ='assets/img/macchina_gialla.png'> </div>";	
+
+				}
+				else{
+
+					if (risposta[i].colore == "verde") {
+
+						document.getElementById("mostra_gara").innerHTML += "<div id='div_partecipante' class='row'> <label class ='text-border-1 text-border-2'>" + risposta[i].nome + "</label>" +"<br>"+ "<img name='piloti' style =' width: 200px; position: relative;' id='sfondo_gara' src ='assets/img/macchina_verde.png'> </div>";	
+
+					}
+
+				}
+
+			}
+		}
 	}
 
 	ritarda_animazione = setInterval(gara.bind(this, risposta), 700);
@@ -50,9 +81,8 @@ function gara (risposta){
 				if (risposta[i].distanza_percorsa != -1) {
 					if (j < risposta[i].distanza_percorsa) {
 						
-						spostamenti_in_pixel = (spostamenti_in_pixel * risposta[i].numeri_rand[j])/100;
+						spostamenti_in_pixel = (lunghezza_percorso * risposta[i].numeri_rand[j])/100;
 						document.getElementsByName("piloti")[i].style.left = spostamenti_in_pixel + "px";
-						console.log(spostamenti_in_pixel);
 
 					}
 
@@ -110,13 +140,15 @@ function gara (risposta){
 
 	}
 
+	
 
 	function main() {
 
+		var sound = new Audio('assets/musica/musica_start.mp3');
+		sound.play;
 		posizione_div();
 		invia.addEventListener('click', numero_giocatori);
 		avvia_gara.addEventListener('click', onAvviaGaraClick);
-
 	}
 
 
@@ -185,7 +217,12 @@ function gara (risposta){
 
 	}
 
+	
 
+	
+
+
+	
 
 
 

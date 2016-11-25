@@ -22,10 +22,18 @@ Class Macchina implements jsonSerializable{
 
 			$this->movimento = rand(0,25);
 			$this->operazione += $this->movimento;
+
+			if ($this->operazione > 100) {
+
+          	$this->operazione = 100;
+          	
+          }
 			$this->numeri_rand[$i] = $this->operazione;
 			$this->distanza_percorsa ++;
+          
 
-		}	
+		}
+
 
 		
 	}
