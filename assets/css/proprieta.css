@@ -1,9 +1,8 @@
 body{
 
-	position: cover;
-	background-image: url(http://themovieblog.com/wp-content/uploads/2013/05/fast_and_furious_6_banner.jpg);
-	background-repeat: no-repeat center center;
-	background-size: cover;
+	/*background-image: url(http://themovieblog.com/wp-content/uploads/2013/05/fast_and_furious_6_banner.jpg);
+	background-repeat: no-repeat;*/
+	background-size: 100%;
 }
 
 label{

@@ -1,5 +1,4 @@
 <?php 
-
 Class Macchina implements jsonSerializable{
 
 	private $nome;
@@ -16,11 +15,11 @@ Class Macchina implements jsonSerializable{
 		$this->colore = $color; 
 	}
 
-	public function setMovimento(){
+	public function Movimento(){
 
 		for ($i = 0; $this->operazione < 100; $i++) {
 
-			$this->movimento = rand(0,25);
+			$this->movimento = rand(0,15);
 			$this->operazione += $this->movimento;
 
 			if ($this->operazione > 100) {
@@ -41,16 +40,6 @@ Class Macchina implements jsonSerializable{
 	public function getPassiTotali(){
 
 		return $this->distanza_percorsa;
-	}
-
-	public function getPosizioni(){
-
-		return $this->posizioni;
-	}
-
-	public function getNumeriRand(){
-
-		return $this->numeri_rand;
 	}
 
 

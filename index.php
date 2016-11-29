@@ -1,22 +1,7 @@
 <?php
-include 'inc/form.php';
+include 'api.php';
 include 'inc/template-vars/gara_clandestina.php';
 include 'inc/template-parts/header.php';
-include 'inc/macchina.php';
-include 'inc/controllo_inserimento_giocatori.php';
-include 'inc/gara.php';
-
-
-
+include 'inc/form_prova.php';
+include 'inc/template-parts/before_body_close.php';
 ?>
-<script type="text/javascript" src="assets/js/funzioni.js"></script>
-<link rel="stylesheet" type="text/css" href="assets/css/proprieta.css">
-
-
-<!--bootstrap -->
-
-<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css.map">
-<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css.map">
-<script type="text/javascript" src="assets/js/jquery.js"></script>
-<script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
