@@ -1,55 +1,49 @@
 <?php 
-Class Macchina implements jsonSerializable{
+Class Macchina implements jsonSerializable {
 
 	private $nome;
 	private $colore;
-	private $operazione=0;
-	private $movimento =0;
-	private $distanza_percorsa = 0;
-	private $posizioni;
-	private $numeri_rand;	
+	private $velocita = 0;
+	private $cambiVelocita;
 
-	public function Macchina($name,$color) {
+	const MIN_SPEED = 1;
+	const MAX_SPEED = 15;
 
-		$this->nome = $name;
-		$this->colore = $color; 
+	const CAMBI_VELOCITA = 8;
+
+	public function Macchina($name, $color) {
+
+		$this->nome   = $name;
+		$this->colore = $color;
+
 	}
 
-	public function Movimento(){
+	public function Muovi() {
 
-		for ($i = 0; $this->operazione < 100; $i++) {
+		for ($i = 0; count($this->cambiVelocita) < self::CAMBI_VELOCITA; $i++) {
 
-			$this->movimento = rand(0,15);
-			$this->operazione += $this->movimento;
+			$this->velocita += rand(self::MIN_SPEED, self::MAX_SPEED);
 
-			if ($this->operazione > 100) {
-
-          	$this->operazione = 100;
-          	
-          }
-			$this->numeri_rand[$i] = $this->operazione;
-			$this->distanza_percorsa ++;
-          
+			$this->cambiVelocita[$i] = $this->velocita;
 
 		}
-
-
-		
-	}
-	
-	public function getPassiTotali(){
-
-		return $this->distanza_percorsa;
 	}
 
+	public function getCambiVelocita() {
+
+		return 0; //Questo a cosa serve?
+
+	}
 
 	public function jsonSerialize() {
+
 		return Array (
-			'nome'     => $this->nome,
-			'colore'   => $this->colore,
-			'distanza_percorsa'    => $this->distanza_percorsa,
-			'numeri_rand' => $this->numeri_rand
+			'nome'     			=> $this->nome,
+			'colore'   			=> $this->colore,
+			'distanza_percorsa' => self::CAMBI_VELOCITA,
+			'numeri_rand' 		=> $this->cambiVelocita
 			);
+
 	}
 }
 
